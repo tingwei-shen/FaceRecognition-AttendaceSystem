@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition</title>
+    <script defer src="./js/face-api.min.js"></script>
+    <script defer src="./js/script.js"></script>
+    <style>
+                #videoSection{
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        canvas{
+            top: 0;
+            left: 0;
+            position: absolute;
+        }
+
+        #tableSection{
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        table{
+            margin: 50px auto;
+        }
+
+        table, th, td{
+            border-collapse: collapse;
+            border: 1px solid #0E176B;
+        }
+
+        th, td{
+            padding: 5px;
+        }
+
+        .wrapper {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+  
+    </style>
+</head>
+<body>
+    <main>
+        <div class="videoSection">
+            <video id="videoInput" width="720" height="550" muted controls></video>
+        </div>
+        
+        <div class="tableSection">
+            <label>Name:</label>
+            <input type="text" id="name-input" name="name-input">
+            <button id="add-name-btn">Add Name</button>
+            <br><br>
+
+            <label>Search:</label>
+            <input placeholder="Search by Name" id="search-input">
+            <button id="search-btn">Search</button>
+            
+
+            <table id="table">
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date Added</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <section hidden id="update-row">
+                <label>Name:</label>
+                <input type="text" id="update-name-input">
+                <button id="update-row-btn">Update</button>
+                <br><br>
+            </section>
+            
+            <div class="wrapper">
+                <button id="myButton">Download</button>
+            </div>
+        </div>
+        
+
+
+        <!-- To download csv file -->
+        
+        <script>
+
+            const objectToCsv = function(data) {
+                const csvRows = [];
+
+                //get the headers
+                const headers = Object.keys(data[0]);
+                csvRows.push(headers.join(','));
+
+                //loop over the rows
+                for (const row of data) {
+                    const values = headers.map(header => {
+                        const escaped = (''+row[header]).replace(/"/g, '\\"');
+                        return `"${escaped}"`;
+                    });
+                    csvRows.push(values.join(','));
+                }
+                return csvRows.join('\n');
+
+                //form escaped comma separated values
+            };
+
+            const download = function(data) {
+                const blob = new Blob([data], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+
+                a.setAttribute('hidden', '');
+                a.setAttribute('href', url);
+                a.setAttribute('download', 'download.csv');
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+
+            const getReport = async function() {
+                const jsonUrl = 'http://34.74.152.145:3000/getAll';
+                const res = await fetch(jsonUrl);
+                const json = await res.json();
+                //console.log(json.data)
+
+                const data = json.data.map(row => ({
+                    name: row.name,
+                    date: row.date_added
+                }));
+                //console.log(data);
+
+                const csvData = objectToCsv(data);
+                download(csvData);
+            };
+
+            
+            (function() {
+                const button = document.getElementById('myButton');
+                button.addEventListener('click', getReport);
+            })()
+        </script>
+        
+    </main>
+    
+</body>
+</html>
