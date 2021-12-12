@@ -47,7 +47,13 @@ ___
 <br>
 
 ### __The Workflow of This Application__
-![Application Workflow](/Resources/Picture7.png "Application Workflow")
+
+<br>
+
+<img src="./Resources/Picture7.png" width="350" height="300">
+
+<br>
+
 ___
 
 
