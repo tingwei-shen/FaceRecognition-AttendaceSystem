@@ -89,8 +89,8 @@ async function recognizeFaces() {
 
 
 function loadLabeledImages() {
-    const labels = ['ChingHo', 'Elizabeth Olsen', 'Emilia Clarke', 'Henry Cavill', 'Robert John Downey Jr.', 
-    'Scarlett Johansson', 'TingWei', 'Tom Hiddleston', 'Tom Holland', 'YingHsuan'] // for WebCam
+    const labels = ['Elizabeth Olsen', 'Emilia Clarke', 'Henry Cavill', 'Robert John Downey Jr.', 
+    'Scarlett Johansson', 'Tom Hiddleston', 'Tom Holland'] // for WebCam
     return Promise.all(
         labels.map(async (label)=>{
             const descriptions = []
