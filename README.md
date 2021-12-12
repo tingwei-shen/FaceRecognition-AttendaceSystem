@@ -32,3 +32,21 @@
 > __Attendance System__
 
 * CRUD (Create, Read, Update, and Delete)
+
+<br>
+
+___
+
+<br>
+
+### __User Interface__
+![User Interface](/Resources/Picture1.png "User Interface")
+
+### __Results__
+![User Interface](/Resources/Picture2.png "User Interface")
+
+![User Interface](/Resources/Picture3.png "User Interface")
+
+![User Interface](/Resources/Picture4.png "User Interface")
+
+![User Interface](/Resources/Picture5.png "User Interface")
