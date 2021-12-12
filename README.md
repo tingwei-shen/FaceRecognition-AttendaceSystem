@@ -39,14 +39,28 @@ ___
 
 <br>
 
+### __The Workflow of Face Recognition__
+![Face Recognition Workflow](/Resources/Picture6.png "Face Recognition Workflow")
+___
+
+
+<br>
+
+### __The Workflow of This Application__
+![Application Workflow](/Resources/Picture7.png "Application Workflow")
+___
+
+
+<br>
+
 ### __User Interface__
 ![User Interface](/Resources/Picture1.png "User Interface")
 
 ### __Results__
-![User Interface](/Resources/Picture2.png "User Interface")
+![Result1](/Resources/Picture2.png "Result1")
 
-![User Interface](/Resources/Picture3.png "User Interface")
+![Result2](/Resources/Picture3.png "Result2")
 
-![User Interface](/Resources/Picture4.png "User Interface")
+![Result3](/Resources/Picture4.png "Result3")
 
-![User Interface](/Resources/Picture5.png "User Interface")
+![Result4](/Resources/Picture5.png "Result4")
